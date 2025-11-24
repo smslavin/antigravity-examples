@@ -1,0 +1,10 @@
+
+# conda environments:
+#
+base                 * C:\Users\sean.slavin\AppData\Local\miniconda3
+game                   C:\Users\sean.slavin\AppData\Local\miniconda3\envs\game
+research_agent_env     C:\Users\sean.slavin\AppData\Local\miniconda3\envs\research_agent_env
+sgqlc                  C:\Users\sean.slavin\AppData\Local\miniconda3\envs\sgqlc
+substack2pdf           C:\Users\sean.slavin\AppData\Local\miniconda3\envs\substack2pdf
+test                   C:\Users\sean.slavin\AppData\Local\miniconda3\envs\test
+
