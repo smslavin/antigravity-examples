@@ -8,6 +8,7 @@ A Python agent that scrapes arXiv for recent papers on Large Language Models (LL
 - **Intelligent Filtering**: Deduplicates and reranks papers based on keyword relevance.
 - **PDF Analysis**: Downloads PDFs and extracts text for deeper analysis.
 - **AI Summarization**: Uses Google's Gemini model to summarize papers and identify trends, insights, and research gaps.
+- **Gist Publication**: Automatically publishes the daily update as a public GitHub Gist.
 - **Daily Update**: Generates a Markdown report (`arxiv-daily-update.md`) with the findings.
 
 ## Setup
@@ -30,12 +31,12 @@ A Python agent that scrapes arXiv for recent papers on Large Language Models (LL
     ```
 
 4.  **Configure Environment**:
-    Create a `.env` file in the `gist-agent` directory with your Gemini API key:
+    Create a `.env` file in the `gist-agent` directory with your Gemini API key and GitHub Token:
     ```bash
     cp .env.example .env
-    # Edit .env and add your GEMINI_API_KEY
+    # Edit .env and add your GEMINI_API_KEY and GITHUB_TOKEN
     ```
-    *(Note: You need a Google Gemini API key)*
+    *(Note: You need a Google Gemini API key and a GitHub Personal Access Token with `gist` scope)*
 
 ## Usage
 
@@ -53,6 +54,10 @@ The agent will:
 
 ## Output
 
-The output is a Markdown file `arxiv-daily-update.md` containing:
+The output is:
+- A Markdown file `arxiv-daily-update.md` containing the full report.
+- A public GitHub Gist with the same content (URL printed to console).
+
+The report contains:
 - **Daily Trends and Insights**: A high-level summary of the day's research.
 - **Top Papers**: Detailed summaries and analysis of the top 10 papers.

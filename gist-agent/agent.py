@@ -157,6 +157,38 @@ class GistAgent:
             
         return content
 
+    def publish_to_gist(self, content):
+        print("Publishing to Gist...")
+        token = os.getenv("GITHUB_TOKEN")
+        if not token:
+            print("GITHUB_TOKEN not found. Skipping Gist publication.")
+            return
+
+        url = "https://api.github.com/gists"
+        headers = {
+            "Authorization": f"token {token}",
+            "Accept": "application/vnd.github.v3+json"
+        }
+        data = {
+            "description": f"arXiv Daily Update - {datetime.date.today()}",
+            "public": True,
+            "files": {
+                "arxiv-daily-update.md": {
+                    "content": content
+                }
+            }
+        }
+        
+        try:
+            response = requests.post(url, headers=headers, json=data)
+            response.raise_for_status()
+            gist_url = response.json()["html_url"]
+            print(f"Published to Gist: {gist_url}")
+            return gist_url
+        except Exception as e:
+            print(f"Failed to publish to Gist: {e}")
+            return None
+
     def run(self):
         papers = self.search_arxiv()
         print(f"Found {len(papers)} papers.")
@@ -182,6 +214,8 @@ class GistAgent:
         with open("arxiv-daily-update.md", "w") as f:
             f.write(markdown_content)
         print("Done. Saved to arxiv-daily-update.md")
+        
+        self.publish_to_gist(markdown_content)
 
 if __name__ == "__main__":
     agent = GistAgent()
