@@ -21,7 +21,12 @@ KEYWORDS = [
     "vector representations",
     "transformer neural networks",
     "natural language processing",
-    "NLP"
+    "NLP",
+    "agent",
+    "ai agent",
+    "agentic",
+    "mcp",
+    "model context protocol"
 ]
 
 class GistAgent:
